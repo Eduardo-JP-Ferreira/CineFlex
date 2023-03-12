@@ -4,23 +4,17 @@ import { useEffect, useState } from "react";
 
 export default function Home(){
     let requisicao 
-    const [listaFilmes, setListaFilmes] = useState([])
+    const [listaFilmes, setListaFilmes] = useState(undefined)
 
     useEffect(() => {
 		requisicao = axios.get("https://mock-api.driven.com.br/api/v8/cineflex/movies");
 
-		requisicao.then(resposta => {
-			// console.log("api",resposta.data);
-            setListaFilmes(resposta.data)
-            // console.log("img",listaFilmes);
-		});
+		requisicao.then(resposta => setListaFilmes(resposta.data));
 	}, []);
     // console.log("lista2",listaFilmes);
 
-    function clicouFilme(){
-        alert("jda")
-    }
+
     return(
-        <HomePage listaFilmes={listaFilmes} clicouFilme={clicouFilme}/>
+        <HomePage listaFilmes={listaFilmes} />
     )
 }

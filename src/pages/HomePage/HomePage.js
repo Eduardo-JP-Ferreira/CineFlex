@@ -3,6 +3,9 @@ import styled from "styled-components"
 
 export default function HomePage(props) {
 
+    if(props.listaFilmes === undefined){
+        return  <Carregando>Carregando...</Carregando>
+    }
 
     return (
         <PageContainer>
@@ -23,6 +26,13 @@ export default function HomePage(props) {
         </PageContainer>
     )
 }
+
+const Carregando = styled.div`
+display: flex;
+font-size: 30px;
+justify-content: center;
+margin-top: 100px;
+`
 
 const PageContainer = styled.div`
     display: flex;
