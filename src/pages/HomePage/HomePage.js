@@ -1,26 +1,23 @@
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 
-export default function HomePage() {
+export default function HomePage(props) {
+
+
     return (
         <PageContainer>
             Selecione o filme
-
+            {/* {console.log(props.listaFilmes[0].id)} */}
             <ListContainer>
-                <MovieContainer>
-                    <img src={"https://br.web.img2.acsta.net/pictures/22/05/16/17/59/5165498.jpg"} alt="poster"/>
-                </MovieContainer>
+            {props.listaFilmes.map((item) => 
+            
+                <MovieContainer>  
 
-                <MovieContainer>
-                    <img src={"https://br.web.img2.acsta.net/pictures/22/05/16/17/59/5165498.jpg"} alt="poster"/>
+                    <Link to={`/sessoes/${item.id}`}>
+                      <img src={item.posterURL} alt="poster"/>
+                    </Link>  
                 </MovieContainer>
-
-                <MovieContainer>
-                    <img src={"https://br.web.img2.acsta.net/pictures/22/05/16/17/59/5165498.jpg"} alt="poster"/>
-                </MovieContainer>
-
-                <MovieContainer>
-                    <img src={"https://br.web.img2.acsta.net/pictures/22/05/16/17/59/5165498.jpg"} alt="poster"/>
-                </MovieContainer>
+                )}
             </ListContainer>
 
         </PageContainer>
