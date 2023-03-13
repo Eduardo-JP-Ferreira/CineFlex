@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import SeatsPage from "../pages/SeatsPage/SeatsPage";
 
 
-export default function Seats({listaAssento, setListaAssento, selecionado, setSelecionado, ids, setIds, name, setName, cpf, setCpf}) {
+export default function Seats({listaAssento, setListaAssento, selecionado, setSelecionado, ids, setIds, name, setName, cpf, setCpf, idAssento, setIdAssento}) {
 
     const { idSessao } = useParams();
     // const [listaAssento, setListaAssento] = useState(undefined)
@@ -27,6 +27,9 @@ export default function Seats({listaAssento, setListaAssento, selecionado, setSe
         name={name}
         setName={setName}
         cpf={cpf}
-        setCpf={setCpf}/>
+        setCpf={setCpf}
+        idAssento={idAssento}
+        setIdAssento={setIdAssento}
+        />
     )
 }

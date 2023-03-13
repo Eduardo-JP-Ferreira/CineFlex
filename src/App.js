@@ -11,6 +11,7 @@ export default function App() {
 
     const [selecionado, setSelecionado] = useState([])
     const [ids, setIds] = useState([])
+    const [idAssento, setIdAssento] = useState([])
     const [name, setName] = useState("")
     const [cpf, setCpf] = useState("")
     const [listaAssento, setListaAssento] = useState(undefined)
@@ -36,6 +37,8 @@ export default function App() {
                      setName={setName}
                      cpf={cpf}
                      setCpf={setCpf}
+                     idAssento={idAssento}
+                     setIdAssento={setIdAssento}
                      />}/>
 				    <Route path="/sucesso" element={<Success
                     listaAssento={listaAssento}

@@ -3,7 +3,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 
-export default function SeatsPage({selecionado, setSelecionado, listaAssento, ids, setIds, name, setName, cpf, setCpf}) {
+export default function SeatsPage({selecionado, setSelecionado, listaAssento, ids, setIds, name, setName, cpf, setCpf, idAssento, setIdAssento}) {
     { console.log("ListaA", listaAssento) }
     let navigate = useNavigate();
    
@@ -11,7 +11,7 @@ export default function SeatsPage({selecionado, setSelecionado, listaAssento, id
     // const [name, setName] = useState("")
     // const [cpf, setCpf] = useState("")
 
-    const arrayPostFinal = [{ids, name, cpf}]
+    const arrayPostFinal = {ids, name, cpf}
     // const arrayTeste = [{
     //     ids: [1903],
     //     name: "Fulano",
@@ -64,8 +64,8 @@ export default function SeatsPage({selecionado, setSelecionado, listaAssento, id
             const requisicao = axios.post("https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many", arrayPostFinal)
 
             requisicao.then(resposta => {
-                alert("Reservei")
-                console.log("OK")
+                 console.log("OK")
+                navigate('/sucesso')
             });
             requisicao.catch(resposta => {
                 alert("Erro")
