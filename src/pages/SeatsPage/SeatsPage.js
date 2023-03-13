@@ -1,28 +1,64 @@
+import { useState } from "react"
 import styled from "styled-components"
 
 export default function SeatsPage(props) {
+    // { console.log("ListaA", props.listaAssento) }
+    // const listaAssentoNovo = [...props.listaAssento.seats]
+    // {console.log("ListaB",listaAssentoNovo)}
+    // let seatColor = "red"
+    // const white = "white"
+    // const red = "red"
+
+    const [selecionado, setSelecionado] = useState([])
+    console.log("Sele: ",selecionado)
+    let verificaSelecao
+    function clicou(nome, disponibilidade){
+        console.log("CLICOU")
+        if(disponibilidade === false){
+            alert("Esse assento não está disponível")
+        }
+        else if(selecionado.includes(nome)===true){
+            const buscaIndice = selecionado.indexOf(nome)
+            selecionado.splice(buscaIndice,1)
+            const novoArray = [...selecionado]
+            setSelecionado(novoArray)
+        }
+        else{
+            const novoArray = [...selecionado, nome]
+            setSelecionado(novoArray)
+        }
+        
+      
+    }
+
+    if (props.listaAssento === undefined) {
+        return <Carregando>Carregando...</Carregando>
+    }
 
     return (
         <PageContainer>
             Selecione o(s) assento(s)
 
             <SeatsContainer>
-                {props.listaAssento.seats.map((item) => 
-                <SeatItem>{item.name}</SeatItem>
+                {props.listaAssento.seats.map((item) =>
+                    <>
+                        {selecionado.includes(item.name) ? verificaSelecao = true: verificaSelecao = false}
+                        <SeatItem disponivel={item.isAvailable} sele={verificaSelecao} onClick={()=> clicou(item.name, item.isAvailable)}>{item.name}</SeatItem>
+                    </>
                 )}
             </SeatsContainer>
 
             <CaptionContainer>
                 <CaptionItem>
-                    <CaptionCircle />
+                    <CaptionCircle nome="selecionado" />
                     Selecionado
                 </CaptionItem>
                 <CaptionItem>
-                    <CaptionCircle />
+                    <CaptionCircle nome="disponivel" />
                     Disponível
                 </CaptionItem>
                 <CaptionItem>
-                    <CaptionCircle />
+                    <CaptionCircle nome="indisponivel" />
                     Indisponível
                 </CaptionItem>
             </CaptionContainer>
@@ -50,6 +86,13 @@ export default function SeatsPage(props) {
         </PageContainer>
     )
 }
+
+const Carregando = styled.div`
+display: flex;
+font-size: 30px;
+justify-content: center;
+margin-top: 100px;
+`
 
 const PageContainer = styled.div`
     display: flex;
@@ -94,8 +137,8 @@ const CaptionContainer = styled.div`
     margin: 20px;
 `
 const CaptionCircle = styled.div`
-    border: 1px solid blue;         // Essa cor deve mudar
-    background-color: lightblue;    // Essa cor deve mudar
+    border: ${props => props.nome === "selecionado" ? "1px solid #0E7D71" : (props => props.nome === "disponivel" ? "1px solid #7B8B99" : "1px solid #F7C52B")};
+    background-color: ${props => props.nome === "selecionado" ? "#1AAE9E" : (props => props.nome === "disponivel" ? "#C3CFD9" : "#FBE192")};
     height: 25px;
     width: 25px;
     border-radius: 25px;
@@ -111,8 +154,9 @@ const CaptionItem = styled.div`
     font-size: 12px;
 `
 const SeatItem = styled.div`
-    border: 1px solid blue;         // Essa cor deve mudar
-    background-color: lightblue;    // Essa cor deve mudar
+    border: ${props => props.sele === true ? "1px solid #0E7D71" : (props => props.disponivel === true ? "1px solid #808F9D" : "1px solid #F7C52B")};       
+    background-color: ${props => props.sele === true ? "#1AAE9E" : (props => props.disponivel === true ? "#C3CFD9" : "#FBE192")};   
+
     height: 25px;
     width: 25px;
     border-radius: 25px;
