@@ -1,9 +1,34 @@
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 
-export default function SuccessPage() {
-
+export default function SuccessPage({listaAssento, selecionado, name, cpf}) {
+    console.log(listaAssento)
     return (
         <PageContainer>
+            {/* <h1>Pedido feito <br /> com sucesso!</h1>
+
+            <TextContainer>
+                <strong><p>Filme e sessão</p></strong>
+                <p>{listaAssento.movie.title}</p>
+                <p>{listaAssento.day.date} - {listaAssento.name}</p>
+            </TextContainer>
+
+            <TextContainer>
+                <strong><p>Ingressos</p></strong>
+                {selecionado.map((item)=>
+                    <p>Assento {item}</p>
+                )}
+            </TextContainer>
+
+            <TextContainer>
+                <strong><p>Comprador</p></strong>
+                <p>Nome: {name}</p>
+                <p>CPF: {cpf}</p>
+            </TextContainer>
+            <Link to={`/`}>
+                <button>Voltar para Home</button>
+            </Link> */}
+
             <h1>Pedido feito <br /> com sucesso!</h1>
 
             <TextContainer>
@@ -24,8 +49,10 @@ export default function SuccessPage() {
                 <p>Nome: Letícia Chijo</p>
                 <p>CPF: 123.456.789-10</p>
             </TextContainer>
+            <Link to={`/`}>
+                <button>Voltar para Home</button>
+            </Link>
 
-            <button>Voltar para Home</button>
         </PageContainer>
     )
 }

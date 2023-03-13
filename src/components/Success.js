@@ -1,9 +1,14 @@
 import SuccessPage from "../pages/SuccessPage/SuccessPage";
 
-export default function Success(){
+export default function Success({listaAssento, selecionado, name, cpf}){
 
 
     return(
-        <SuccessPage/>
+        <SuccessPage
+        listaAssento={listaAssento}
+        selecionado={selecionado}
+        name={name}
+        cpf={cpf}
+        />
     )
 }

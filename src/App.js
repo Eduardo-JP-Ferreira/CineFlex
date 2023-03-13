@@ -37,7 +37,12 @@ export default function App() {
                      cpf={cpf}
                      setCpf={setCpf}
                      />}/>
-				    <Route path="/sucesso" element={<Success />}/> 
+				    <Route path="/sucesso" element={<Success
+                    listaAssento={listaAssento}
+                    selecionado={selecionado}
+                    name={name}
+                    cpf={cpf}
+                    />}/> 
 
 			    </Routes>
 		    </BrowserRouter>
