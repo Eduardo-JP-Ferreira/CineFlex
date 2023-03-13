@@ -11,7 +11,6 @@ export default function SessionsPage(props) {
     return (
         <PageContainer>
             Selecione o horário
-            {/* {console.log("dasd",props.sessaoFilme)} */}
             {props.sessaoFilme.days.map((item)=>
     
             <div>

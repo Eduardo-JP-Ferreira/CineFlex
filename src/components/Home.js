@@ -11,8 +11,6 @@ export default function Home(){
 
 		requisicao.then(resposta => setListaFilmes(resposta.data));
 	}, []);
-    // console.log("lista2",listaFilmes);
-
 
     return(
         <HomePage listaFilmes={listaFilmes} />

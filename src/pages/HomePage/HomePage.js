@@ -10,12 +10,9 @@ export default function HomePage(props) {
     return (
         <PageContainer>
             Selecione o filme
-            {/* {console.log(props.listaFilmes[0].id)} */}
             <ListContainer>
-            {props.listaFilmes.map((item) => 
-            
+            {props.listaFilmes.map((item) =>  
                 <MovieContainer data-test="movie">  
-
                     <Link to={`/sessoes/${item.id}`}>
                       <img src={item.posterURL} alt="poster"/>
                     </Link>  

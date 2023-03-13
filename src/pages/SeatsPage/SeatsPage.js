@@ -5,25 +5,14 @@ import styled from "styled-components"
 
 export default function SeatsPage({selecionado, setSelecionado, listaAssento, ids, setIds, name, setName, cpf, setCpf, idAssento, setIdAssento}) {
     { console.log("ListaA", listaAssento) }
-    let navigate = useNavigate();
+    const navigate = useNavigate();
    
-    // const [ids, setIds] = useState([])
-    // const [name, setName] = useState("")
-    // const [cpf, setCpf] = useState("")
-
     const arrayPostFinal = {ids, name, cpf}
-    // const arrayTeste = [{
-    //     ids: [1903],
-    //     name: "Fulano",
-    //     cpf: "12345678900"
-    // }]
+  
 
-
-    console.log("Sele: ",selecionado)
-    console.log("SeleID: ",ids)
     let verificaSelecao
     function clicou(nome, disponibilidade, id){
-        console.log("CLICOU")
+     
 
         if(disponibilidade === false){
             alert("Esse assento não está disponível")
@@ -56,15 +45,11 @@ export default function SeatsPage({selecionado, setSelecionado, listaAssento, id
         }
         else{
             
-
             console.log("arrayPost", arrayPostFinal)
             
-            // navigate('/sucesso') teste da página sucesso FAVOR DESCONSIDERAR
-
             const requisicao = axios.post("https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many", arrayPostFinal)
 
             requisicao.then(resposta => {
-                 console.log("OK")
                 navigate('/sucesso')
             });
             requisicao.catch(resposta => {
