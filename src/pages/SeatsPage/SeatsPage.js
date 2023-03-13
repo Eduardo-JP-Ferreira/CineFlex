@@ -1,17 +1,15 @@
 import styled from "styled-components"
 
-export default function SeatsPage() {
+export default function SeatsPage(props) {
 
     return (
         <PageContainer>
             Selecione o(s) assento(s)
 
             <SeatsContainer>
-                <SeatItem>01</SeatItem>
-                <SeatItem>02</SeatItem>
-                <SeatItem>03</SeatItem>
-                <SeatItem>04</SeatItem>
-                <SeatItem>05</SeatItem>
+                {props.listaAssento.seats.map((item) => 
+                <SeatItem>{item.name}</SeatItem>
+                )}
             </SeatsContainer>
 
             <CaptionContainer>
