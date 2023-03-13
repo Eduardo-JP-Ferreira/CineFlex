@@ -4,10 +4,10 @@ import { useParams } from "react-router-dom";
 import SeatsPage from "../pages/SeatsPage/SeatsPage";
 
 
-export default function Seats() {
+export default function Seats({listaAssento, setListaAssento, selecionado, setSelecionado, ids, setIds, name, setName, cpf, setCpf}) {
 
     const { idSessao } = useParams();
-    const [listaAssento, setListaAssento] = useState(undefined)
+    // const [listaAssento, setListaAssento] = useState(undefined)
 
     useEffect(() => {
         console.log("ENTREI SEATS")
@@ -22,6 +22,11 @@ export default function Seats() {
     }, []);
 
     return (
-        <SeatsPage listaAssento={listaAssento} />
+        <SeatsPage listaAssento={listaAssento} selecionado={selecionado} setSelecionado={setSelecionado} ids={ids}
+        setIds={setIds} 
+        name={name}
+        setName={setName}
+        cpf={cpf}
+        setCpf={setCpf}/>
     )
 }

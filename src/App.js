@@ -4,10 +4,17 @@ import Seats from "./components/Seats"
 import Sessions from "./components/Sessions"
 import Success from "./components/Success"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import { useState } from "react"
 
 
 export default function App() {
+
+    const [selecionado, setSelecionado] = useState([])
+    const [ids, setIds] = useState([])
+    const [name, setName] = useState("")
+    const [cpf, setCpf] = useState("")
+    const [listaAssento, setListaAssento] = useState(undefined)
+
     return (
         <>
            <NavContainer>CINEFLEX</NavContainer>
@@ -18,7 +25,18 @@ export default function App() {
 
 				    <Route path="/" element={<Home />} />
 				    <Route path="/sessoes/:idFilme" element={<Sessions />} />
-                    <Route path="/assentos/:idSessao" element={<Seats />}/>
+                    <Route path="/assentos/:idSessao" element={<Seats 
+                     listaAssento={listaAssento}
+                     setListaAssento={setListaAssento}
+                     selecionado={selecionado}
+                     setSelecionado={setSelecionado}
+                     ids={ids}
+                     setIds={setIds}
+                     name={name}
+                     setName={setName}
+                     cpf={cpf}
+                     setCpf={setCpf}
+                     />}/>
 				    <Route path="/sucesso" element={<Success />}/> 
 
 			    </Routes>

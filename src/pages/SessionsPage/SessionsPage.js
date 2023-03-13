@@ -11,7 +11,7 @@ export default function SessionsPage(props) {
     return (
         <PageContainer>
             Selecione o horário
-            {/* {console.log("dasd",props.sessaoFilme.days)} */}
+            {/* {console.log("dasd",props.sessaoFilme)} */}
             {props.sessaoFilme.days.map((item)=>
     
             <div>
@@ -34,7 +34,7 @@ export default function SessionsPage(props) {
                     <img src={props.sessaoFilme.posterURL} alt="poster" />
                 </div>
                 <div>
-                    <p>Tudo em todo lugar ao mesmo tempo</p>
+                    <p>{props.sessaoFilme.title}</p>
                 </div>
             </FooterContainer>
 
