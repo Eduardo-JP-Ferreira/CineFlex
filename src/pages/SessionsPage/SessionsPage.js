@@ -15,21 +15,21 @@ export default function SessionsPage(props) {
             {props.sessaoFilme.days.map((item)=>
     
             <div>
-                <SessionContainer>
+                <SessionContainer data-test="movie-day" >
                     {item.weekday} {item.date}
                     <ButtonsContainer>
                        
                         <Link to={`/assentos/${item.showtimes[0].id}`}>
-                            <button>{item.showtimes[0].name}</button>
+                            <button data-test="showtime" >{item.showtimes[0].name}</button>
                         </Link> 
                         <Link to={`/assentos/${item.showtimes[1].id}`}>
-                            <button>{item.showtimes[1].name}</button>
+                            <button data-test="showtime" >{item.showtimes[1].name}</button>
                         </Link> 
                     </ButtonsContainer>
                 </SessionContainer>
             </div>
             )}
-            <FooterContainer>
+            <FooterContainer data-test="footer">
                 <div>
                     <img src={props.sessaoFilme.posterURL} alt="poster" />
                 </div>

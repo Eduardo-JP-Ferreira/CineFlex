@@ -1,10 +1,11 @@
 import axios from "axios"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 
 export default function SeatsPage({selecionado, setSelecionado, listaAssento, ids, setIds, name, setName, cpf, setCpf}) {
     { console.log("ListaA", listaAssento) }
-
+    let navigate = useNavigate();
    
     // const [ids, setIds] = useState([])
     // const [name, setName] = useState("")
@@ -57,6 +58,9 @@ export default function SeatsPage({selecionado, setSelecionado, listaAssento, id
             
 
             console.log("arrayPost", arrayPostFinal)
+            
+            // navigate('/sucesso') teste da página sucesso FAVOR DESCONSIDERAR
+
             const requisicao = axios.post("https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many", arrayPostFinal)
 
             requisicao.then(resposta => {
@@ -84,7 +88,7 @@ export default function SeatsPage({selecionado, setSelecionado, listaAssento, id
                 {listaAssento.seats.map((item) =>
                     <>
                         {selecionado.includes(item.name) ? verificaSelecao = true: verificaSelecao = false}
-                        <SeatItem disponivel={item.isAvailable} sele={verificaSelecao} onClick={()=> clicou(item.name, item.isAvailable, item.id)}>{item.name}</SeatItem>
+                        <SeatItem data-test="seat" disponivel={item.isAvailable} sele={verificaSelecao} onClick={()=> clicou(item.name, item.isAvailable, item.id)}>{item.name}</SeatItem>
                     </>
                 )}
             </SeatsContainer>
@@ -106,16 +110,16 @@ export default function SeatsPage({selecionado, setSelecionado, listaAssento, id
 
             <FormContainer onSubmit={reservarAssento}>
                 Nome do Comprador:
-                <input type="nome" required value={name} onChange={e => setName(e.target.value)} placeholder="Digite seu nome..." />
+                <input data-test="client-name" type="nome" required value={name} onChange={e => setName(e.target.value)} placeholder="Digite seu nome..." />
 
                 CPF do Comprador:
-                <input type="cpf" required value={cpf} onChange={e => setCpf(e.target.value)} placeholder="Digite seu CPF..." />
+                <input data-test="client-cpf"  type="cpf" required value={cpf} onChange={e => setCpf(e.target.value)} placeholder="Digite seu CPF..." />
 
-                <button type="submit">Reservar Assento(s)</button>
+                <button data-test="book-seat-btn" type="submit">Reservar Assento(s)</button>
               
             </FormContainer>
 
-            <FooterContainer>
+            <FooterContainer data-test="footer">
                 <div>
                     <img src={listaAssento.movie.posterURL} alt="poster" />
                 </div>

@@ -5,31 +5,31 @@ export default function SuccessPage({listaAssento, selecionado, name, cpf}) {
     console.log(listaAssento)
     return (
         <PageContainer>
-            {/* <h1>Pedido feito <br /> com sucesso!</h1>
+            <h1>Pedido feito <br /> com sucesso!</h1>
 
-            <TextContainer>
+            <TextContainer data-test="movie-info">
                 <strong><p>Filme e sessão</p></strong>
                 <p>{listaAssento.movie.title}</p>
                 <p>{listaAssento.day.date} - {listaAssento.name}</p>
             </TextContainer>
 
-            <TextContainer>
+            <TextContainer data-test="seats-info">
                 <strong><p>Ingressos</p></strong>
                 {selecionado.map((item)=>
                     <p>Assento {item}</p>
                 )}
             </TextContainer>
 
-            <TextContainer>
+            <TextContainer data-test="client-info">
                 <strong><p>Comprador</p></strong>
                 <p>Nome: {name}</p>
                 <p>CPF: {cpf}</p>
             </TextContainer>
             <Link to={`/`}>
-                <button>Voltar para Home</button>
-            </Link> */}
+                <button data-test="go-home-btn" >Voltar para Home</button>
+            </Link>
 
-            <h1>Pedido feito <br /> com sucesso!</h1>
+            {/* <h1>Pedido feito <br /> com sucesso!</h1>
 
             <TextContainer>
                 <strong><p>Filme e sessão</p></strong>
@@ -51,7 +51,7 @@ export default function SuccessPage({listaAssento, selecionado, name, cpf}) {
             </TextContainer>
             <Link to={`/`}>
                 <button>Voltar para Home</button>
-            </Link>
+            </Link> */}
 
         </PageContainer>
     )
